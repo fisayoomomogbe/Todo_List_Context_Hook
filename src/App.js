@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Navbar from "./components/Navbar";
+import TodoList from "./components/TodoList";
+import ThemeContextProvider from "./contexts/ThemeContext";
+import AuthContextProvider from "./contexts/AuthContext";
+import TodoListContextProvider from "./contexts/TodoListContext";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="ui raised very padded text container segment">
+        <AuthContextProvider>
+          <TodoListContextProvider>
+            <ThemeContextProvider>
+              <Navbar />
+              <TodoList />
+            </ThemeContextProvider>
+          </TodoListContextProvider>
+        </AuthContextProvider>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
